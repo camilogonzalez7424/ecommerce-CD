@@ -26,8 +26,9 @@ spec:
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-      {{- range .Values.imagePullSecrets }}
-      - name: {{ .name }}
+        {{- range . }}
+        - name: {{ .name }}
+        {{- end }}
       {{- end }}
       serviceAccountName: {{ include "e-commerce-admin.serviceAccountName" . }}
       securityContext:
@@ -65,11 +66,6 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          env:
-            {{- range .Values.env }}
-            - name: {{ .name }}
-              value: {{ .value | quote }}
-            {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
