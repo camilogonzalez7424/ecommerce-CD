@@ -6,10 +6,10 @@ replicaCount: 1
 namespace: e-store
 
 image:
-  repository: containerRegistryUnique.azurecr.io
+  repository: containerRegistryUnique.azurecr.io/e-store1
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "0.0.3"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -42,7 +42,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 3001
 
 ingress:
   enabled: false
