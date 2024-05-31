@@ -17,3 +17,5 @@ Argo CD se configurará para sincronizar automáticamente con el repositorio de 
 Se establecerán notificaciones dentro de Argo CD para alertar sobre eventos importantes, como despliegues exitosos o fallidos, proporcionando visibilidad y control sobre el proceso de despliegue continuo.
 
 Con Argo CD integrado en el proceso de desarrollo, garantizaremos un despliegue automatizado y confiable de la plataforma de comercio electrónico de InnovaRetail Corp., lo que permitirá una iteración rápida y segura de nuevas funcionalidades y mejoras.
+
+
