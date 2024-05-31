@@ -97,3 +97,27 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+env:
+  - name: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+    value: "pk_test_Y2FwaXRhbC1odW1wYmFjay01NC5jbGVyay5hY2NvdW50cy5kZXYk"
+  - name: CLERK_SECRET_KEY
+    value: "sk_test_M41hUtSCghLofhQpfdby0kGTY6j06Aa1SpJuC3HVnA"
+  - name: NEXT_PUBLIC_CLERK_SIGN_IN_URL
+    value: "/sign-in"
+  - name: NEXT_PUBLIC_CLERK_SIGN_UP_URL
+    value: "/sign-up"
+  - name: NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL
+    value: "/"
+  - name: NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL
+    value: "/"
+  - name: DATABASE_URL
+    value: "mysql://admin:Pass123.@mysql-server.databases.svc.cluster.local:3306/ecommerce_db"
+  - name: NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+    value: "dlviqeipm"
+  - name: FRONTEND_STORE_URL
+    value: "http://ecommerce-store:3001"
+  - name: STRIPE_API_KEY
+    value: "sk_test_51Owc1jRrb328b1F6XFoBh6eQPDlB3lYK7UwHUVKpqnTtbuN8i7C5sSbSFpeAqIgikjCEO31v8GINtk2RYyBySKdT006G0kdxsM"
+  - name: STRIPE_WEBHOOK_SECRET
+    value: "whsec_d78b83441dd891931db532bfccd6a04e94d473efb5f4bcca45672cb2dfbc251a"
