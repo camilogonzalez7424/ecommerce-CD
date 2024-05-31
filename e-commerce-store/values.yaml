@@ -102,7 +102,4 @@ tolerations: []
 affinity: {}
 
 env:
-  - name: NEXT_PUBLIC_API_URL
-    value: "http://admin-ecommerce.e-commerce-admin.svc.cluster.local:3000/api/e4842c25-047e-450d-bdda-2cc42a4bec6d"
-  - name: REACT_EDITOR
-    value: "atom"
+  NEXT_PUBLIC_API_URL: http://admin-ecommerce.e-commerce-admin.svc.cluster.local:3000/api/e4842c25-047e-450d-bdda-2cc42a4bec6d
