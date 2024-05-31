@@ -25,8 +25,7 @@ spec:
         {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        - name: acr-secret
+      imagePullSecrets: {{ .Values.imagePullSecrets }}
       serviceAccountName: {{ include "e-commerce-admin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
