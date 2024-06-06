@@ -102,4 +102,4 @@ tolerations: []
 affinity: {}
 
 env:
-  NEXT_PUBLIC_API_URL: http://admin-ecommerce.e-commerce-admin.svc.cluster.local:3000/api/e4842c25-047e-450d-bdda-2cc42a4bec6d
+  NEXT_PUBLIC_API_URL: http://admin-e-commerce-admin.e-commerce-admin.svc.cluster.local:3000/api/e4842c25-047e-450d-bdda-2cc42a4bec6d

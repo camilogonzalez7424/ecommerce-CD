@@ -110,6 +110,6 @@ env:
   NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: /
   DATABASE_URL: mysql://admin:Pass123.@mysql-server.databases.svc.cluster.local:3306/ecommerce_db
   NEXT_PUBLIC_CLOUDINARY: dlviqeipm
-  FRONTEND_STORE_URL: http://ecommerce-store:3001
+  FRONTEND_STORE_URL: http://store-ecommerce-store:3001
   STRIPE_API_KEY: sk_test_51Owc1jRrb328b1F6XFoBh6eQPDlB3lYK7UwHUVKpqnTtbuN8i7C5sSbSFpeAqIgikjCEO31v8GINtk2RYyBySKdT006G0kdxsM
   STRIPE_WEBHOOK_SECRET: whsec_d78b83441dd891931db532bfccd6a04e94d473efb5f4bcca45672cb2dfbc251a
