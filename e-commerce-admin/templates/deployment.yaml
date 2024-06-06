@@ -25,7 +25,11 @@ spec:
         {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
-      imagePullSecrets: {{ .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- range . }}
+        - name: {{ .name }}
+        {{- end }}
+      {{- end }}
       serviceAccountName: {{ include "e-commerce-admin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
@@ -35,28 +39,10 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           env:
-            - name: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-              value: "{{ .Values.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}"
-            - name: CLERK_SECRET_KEY
-              value: "{{ .Values.env.CLERK_SECRET_KEY }}"
-            - name: NEXT_PUBLIC
-              value: "{{ .Values.env.NEXT_PUBLIC }}"
-            - name: NEXT_PUBLIC_CLERK_SIGN_UP_URL
-              value: "{{ .Values.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL }}"
-            - name: NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL
-              value: "{{ .Values.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL }}"
-            - name: NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL
-              value: "{{ .Values.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL }}"
-            - name: DATABASE_URL
-              value: "{{ .Values.env.DATABASE_URL }}"
-            - name: NEXT_PUBLIC_CLOUDINARY
-              value: "{{ .Values.env.NEXT_PUBLIC_CLOUDINARY }}"
-            - name: FRONTEND_STORE_URL
-              value: "{{ .Values.env.FRONTEND_STORE_URL }}"
-            - name: STRIPE_API_KEY
-              value: "{{ .Values.env.STRIPE_API_KEY }}"
-            - name: STRIPE_WEBHOOK_SECRET
-              value: "{{ .Values.env.STRIPE_WEBHOOK_SECRET }}"
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
