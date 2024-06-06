@@ -99,7 +99,24 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity: {}
+resources:
+  requests:
+    memory: "2Gi"
+    cpu: "500m"
+  limits:
+    memory: "2.5Gi"
+    cpu: "1"
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app
+              operator: In
+              values:
+                - e-commerce-admin
+        topologyKey: "kubernetes.io/hostname"
 
 env:
   NEXT_PUBLIC_API_URL: http://admin-e-commerce-admin.e-commerce-admin.svc.cluster.local:3000/api/e4842c25-047e-450d-bdda-2cc42a4bec6d
