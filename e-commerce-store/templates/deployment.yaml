@@ -6,8 +6,11 @@ metadata:
   labels:
     {{- include "e-commerce-store.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  {{- with .Values.imagePullSecrets }}
+  imagePullSecrets:
+    {{- range . }}
+    - name: {{ .name }}
+    {{- end }}
   {{- end }}
   selector:
     matchLabels:
