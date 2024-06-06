@@ -49,10 +49,10 @@ service:
 
 ingress:
   enabled: true
-  className: "azure/application-gateway"  # Especifica la clase de Ingress
+  className: "azure-application-gateway"  # Especifica la clase de Ingress
   annotations:
     # Aquí puedes agregar las anotaciones que necesites para tu Ingress
-    kubernetes.io/ingress.class: "azure/application-gateway"  # Especifica la clase de Ingress
+    kubernetes.io/ingress.class: "azure-application-gateway"  # Especifica la clase de Ingress
     # Otras anotaciones que puedas necesitar
 
   tls: []
