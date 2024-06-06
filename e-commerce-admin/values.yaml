@@ -90,11 +90,11 @@ tolerations: []
 
 resources:
   requests:
-    memory: "2.5Gi"
+    memory: "3Gi"
     cpu: "500m"
   limits:
     memory: "3Gi"
-    cpu: "2"
+    cpu: "1"
 
 affinity:
   podAntiAffinity:
