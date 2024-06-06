@@ -6,11 +6,8 @@ metadata:
   labels:
     {{- include "e-commerce-store.labels" . | nindent 4 }}
 spec:
-  {{- with .Values.imagePullSecrets }}
-  imagePullSecrets:
-    {{- range . }}
-    - name: {{ .name }}
-    {{- end }}
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
@@ -28,7 +25,11 @@ spec:
         {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
-      imagePullSecrets: {{ .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- range . }}
+        - name: {{ .name }}
+        {{- end }}
+      {{- end }}
       serviceAccountName: {{ include "e-commerce-store.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
