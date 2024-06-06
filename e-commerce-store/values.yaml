@@ -112,7 +112,7 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
-            - key: app
+            - key: e-commerce-store
               operator: In
               values:
                 - e-commerce-store
