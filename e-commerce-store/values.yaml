@@ -58,8 +58,6 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
-
 autoscaling:
   enabled: false
   minReplicas: 1

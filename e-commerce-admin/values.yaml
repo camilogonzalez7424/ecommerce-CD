@@ -46,7 +46,6 @@ service:
   type: ClusterIP
   port: 3000
 
-
 ingress:
   enabled: false
   className: "azure-application-gateway"  # Especifica la clase de Ingress
@@ -59,7 +58,6 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
 
 autoscaling:
   enabled: false
