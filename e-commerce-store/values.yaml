@@ -43,16 +43,9 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 3001
 
-ingress:
-  enabled: true
-  className: "azure-application-gateway"  # Especifica la clase de Ingress
-  annotations:
-    # Aquí puedes agregar las anotaciones que necesites para tu Ingress
-    kubernetes.io/ingress.class: "azure/application-gateway"  # Especifica la clase de Ingress
-    # Otras anotaciones que puedas necesitar
 
   tls: []
   #  - secretName: chart-example-tls
