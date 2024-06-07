@@ -1,0 +1,6 @@
+projectKey=ecommerce-CD
+serverUrl=http://127.0.0.1:9001
+serverVersion=10.5.1.90531
+dashboardUrl=http://127.0.0.1:9001/dashboard?id=ecommerce-CD
+ceTaskId=8cfec7e8-fafc-467f-8811-0a4536c31d54
+ceTaskUrl=http://127.0.0.1:9001/api/ce/task?id=8cfec7e8-fafc-467f-8811-0a4536c31d54
