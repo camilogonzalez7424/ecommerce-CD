@@ -8,8 +8,7 @@ namespace: e-commerce
 image:
   repository: containerregistryunique.azurecr.io/e-admin
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.11"
+  tag: "0.1.5"
 
 imagePullSecrets:
   - name: acr-secret
@@ -17,31 +16,17 @@ imagePullSecrets:
 nameOverride: ""
 fullnameOverride: ""
 
-
 serviceAccount:
-  # Specifies whether a service account should be created
   create: true
-  # Automatically mount a ServiceAccount's API credentials?
   automount: true
-  # Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
   name: ""
 
 podAnnotations: {}
 podLabels: {}
 
 podSecurityContext: {}
-  # fsGroup: 2000
-
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -49,36 +34,20 @@ service:
 
 ingress:
   enabled: false
-  className: "azure-application-gateway"  # Especifica la clase de Ingress
+  className: "azure-application-gateway"
   annotations:
-    # Aquí puedes agregar las anotaciones que necesites para tu Ingress
-    kubernetes.io/ingress.class: "azure-application-gateway"  # Especifica la clase de Ingress
-    # Otras anotaciones que puedas necesitar
+    kubernetes.io/ingress.class: "azure-application-gateway"
 
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
 
-# Additional volumes on the output Deployment definition.
 volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
-
-# Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
 
 nodeSelector: {}
 
@@ -104,11 +73,11 @@ env:
   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "NEXT-PUBLIC-CLOUDINARY-CLOUD-NAME"
   NEXT_PUBLIC_CLERK_SIGN_UP_URL: "NEXT-PUBLIC-CLERK-SIGN-UP-URL"
   NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: "NEXT-PUBLIC-CLERK-AFTER-SIGN-UP-URL"
+  CLOUDINARY_PRESET_NAME: "CLOUDINARY-PRESET-NAME"
   FRONTEND_STORE_URL: "FRONTEND-STORE-URL"
   STRIPE_API_KEY: "STRIPE-API-KEY"
   STRIPE_WEBHOOK_SECRET: "STRIPE-WEBHOOK-SECRET"
+  NEXT_PUBLIC_API_URL: "NEXT-PUBLIC-API-URL"
 
 secrets:
-  enabled: true
-  providerClass: "azure-keyvault-provider"
-  secretName: "azure-keyvault-secrets"
+  secretName: "keyvault-secrets"
