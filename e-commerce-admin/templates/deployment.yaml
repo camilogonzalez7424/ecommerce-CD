@@ -43,7 +43,7 @@ spec:
             - name: {{ $key }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.secrets.secretName }}
+                  name: {{ default "default-secret-name" .Values.secrets.secretName }}
                   key: {{ $value }}
             {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
