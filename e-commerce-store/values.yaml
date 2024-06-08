@@ -9,7 +9,7 @@ image:
   repository: containerregistryunique.azurecr.io/e-store1
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.7"
+  tag: "0.0.14"
 
 imagePullSecrets:
   - name: acr-secret
