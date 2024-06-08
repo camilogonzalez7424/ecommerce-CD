@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-namespace: e-commerce-admin
+namespace: e-commerce
 
 image:
   repository: containerregistryunique.azurecr.io/e-admin
@@ -96,14 +96,19 @@ affinity:
         topologyKey: "kubernetes.io/hostname"
 
 env:
-  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_Y2FwaXRhbC1odW1wYmFjay01NC5jbGVyay5hY2NvdW50cy5kZXYk
-  CLERK_SECRET_KEY: sk_test_M41hUtSCghLofhQpfdby0kGTY6j06Aa1SpJuC3HVnA
-  NEXT_PUBLIC: /sign-in
-  NEXT_PUBLIC_CLERK_SIGN_UP_URL: /sign-up
-  NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_UR: /
-  NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: /
-  DATABASE_URL: mysql://admin:Pass123.@mysql-server.databases.svc.cluster.local:3306/ecommerce_db
-  NEXT_PUBLIC_CLOUDINARY: dlviqeipm
-  FRONTEND_STORE_URL: http://store-ecommerce-store.e-commerce-store.svc.cluster.local:3001
-  STRIPE_API_KEY: sk_test_51Owc1jRrb328b1F6XFoBh6eQPDlB3lYK7UwHUVKpqnTtbuN8i7C5sSbSFpeAqIgikjCEO31v8GINtk2RYyBySKdT006G0kdxsM
-  STRIPE_WEBHOOK_SECRET: whsec_d78b83441dd891931db532bfccd6a04e94d473efb5f4bcca45672cb2dfbc251a
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: "NEXT-PUBLIC-CLERK-PUBLISHABLE-KEY"
+  CLERK_SECRET_KEY: "CLERK-SECRET-KEY"
+  NEXT_PUBLIC_CLERK_SIGN_IN_URL: "NEXT-PUBLIC-CLERK-SIGN-IN-URL"
+  NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL: "NEXT-PUBLIC-CLERK-AFTER-SIGN-IN-URL"
+  DATABASE_URL: "DATABASE-URL"
+  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "NEXT-PUBLIC-CLOUDINARY-CLOUD-NAME"
+  NEXT_PUBLIC_CLERK_SIGN_UP_URL: "NEXT-PUBLIC-CLERK-SIGN-UP-URL"
+  NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: "NEXT-PUBLIC-CLERK-AFTER-SIGN-UP-URL"
+  FRONTEND_STORE_URL: "FRONTEND-STORE-URL"
+  STRIPE_API_KEY: "STRIPE-API-KEY"
+  STRIPE_WEBHOOK_SECRET: "STRIPE-WEBHOOK-SECRET"
+
+secrets:
+  enabled: true
+  providerClass: "azure-keyvault-provider"
+  secretName: "azure-keyvault-secrets"
